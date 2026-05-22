@@ -12,6 +12,8 @@ docker exec -it namenode hdfs dfs -put /ventas_grandes.csv /ventas_grandes.csv
 
 docker exec -it namenode hdfs dfs -setrep -w 1 /ventas_grandes.csv
 
+docker exec -it namenode hdfs dfs -setrep 3 /ventas_grandes.csv
+
 4. Ejecutar consultas desde Spark
 
 docker exec -it spark-master /spark/bin/pyspark --master spark://spark-master:7077
