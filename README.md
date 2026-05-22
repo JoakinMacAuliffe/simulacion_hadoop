@@ -10,6 +10,8 @@ docker cp ventas_grandes.csv namenode:/ventas_grandes.csv
 
 docker exec -it namenode hdfs dfs -put /ventas_grandes.csv /ventas_grandes.csv
 
+docker exec -it namenode hdfs dfs -setrep -w 1 /ventas_grandes.csv
+
 4. Ejecutar consultas desde Spark
 
 docker exec -it spark-master /spark/bin/pyspark --master spark://spark-master:7077
@@ -21,4 +23,11 @@ import time
 start = time.time()
 print(f"Total filas: {df.count()}")
 print(f"Tiempo: {time.time() - start} segundos")
+input()
+
+
+df = spark.read.csv("hdfs://namenode:9000/ventas_grandes.csv", header=True)
+from pyspark.sql import functions as F
+ventas_por_categoria = df.groupBy("categoria").count().orderBy("count", ascending=False)
+ventas_por_categoria.show()
 input()
