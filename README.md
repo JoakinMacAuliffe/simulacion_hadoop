@@ -1,5 +1,7 @@
 DATASET: https://drive.google.com/file/d/1dp8ZwZnR279cYe7jXGL9O6VhdvxpkVwn/view?usp=sharing
 
+CRÉDITOS DEL DATASET: Diego Tapia
+
 NOTA: Para que los comandos de abajo funcionen, el dataset debe ir ubicado en la carpeta raíz del repositorio.
 
 1. Levantar contenedores
