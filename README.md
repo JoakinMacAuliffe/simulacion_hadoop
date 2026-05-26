@@ -33,3 +33,15 @@ from pyspark.sql import functions as F
 ventas_por_categoria = df.groupBy("categoria").count().orderBy("count", ascending=False)
 ventas_por_categoria.show()
 input()
+
+--- spark_demo.py ---
+
+Para ejecutar este archivo, copiar al contenedor del Spark Master utilizando el siguiente comando:
+
+docker cp spark_demo.py spark-master:/spark_demo.py
+
+Después, ejecutar la consulta:
+
+docker exec -it spark-master /spark/bin/spark-submit /spark_demo.py
+
+NOTA: Spark abre dos puertos, en el 8080 está el dashboard general, en el 4040 se pueden analizar los jobs (en este caso, las consultas mencionadas previamente o el script de pySpark copiado). HDFS abre el puerto 9870.
